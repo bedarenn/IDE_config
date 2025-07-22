@@ -83,8 +83,18 @@ return {
 
     -- Set up lspconfig.
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local lspconfig = require("lspconfig")
     -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-    require("lspconfig")["<YOUR_LSP_SERVER>"].setup({
+    -- require("lspconfig")["<YOUR_LSP_SERVER>"].setup({
+    --   capabilities = capabilities,
+    -- })
+    -- Python (Pyright)
+    lspconfig.pyright.setup({
+      capabilities = capabilities,
+    })
+
+    -- C/C++ (Clangd)
+    lspconfig.clangd.setup({
       capabilities = capabilities,
     })
   end,
